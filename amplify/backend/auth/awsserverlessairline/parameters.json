@@ -1,10 +1,10 @@
 {
-    "identityPoolName": "awsserverlessairline44ea6421_identitypool_44ea6421",
+    "identityPoolName": "awsserverlessairlineidentitypool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "awsser44ea6421",
-    "userPoolName": "awsserverlessairline44ea6421_userpool_44ea6421",
+    "resourceNameTruncated": "awsserc2dd39cb",
+    "userPoolName": "awsserverlessairlineuserpool",
     "autoVerifiedAttributes": [
-        "email"
+        "phone_number"
     ],
     "mfaConfiguration": "OFF",
     "mfaTypes": [
@@ -18,7 +18,7 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-        "email"
+        "phone_number"
     ],
     "userpoolClientGenerateSecret": true,
     "userpoolClientRefreshTokenValidity": 30,
@@ -28,10 +28,20 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "awsser44ea6421_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "awsserc2dd39cb_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "awsserverlessairline44ea6421",
+    "useDefault": "manual",
     "authSelections": "identityPoolAndUserPool",
+    "resourceName": "awsserverlessairline",
+    "thirdPartyAuth": false,
+    "usernameAttributes": [
+        "phone_number"
+    ],
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": "{}",
+    "hostedUI": false,
+    "userPoolGroupList": [],
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",
@@ -44,7 +54,9 @@
             "Arn"
         ]
     },
-    "useDefault": "default",
-    "userPoolGroupList": [],
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "permissions": [],
     "dependsOn": []
 }

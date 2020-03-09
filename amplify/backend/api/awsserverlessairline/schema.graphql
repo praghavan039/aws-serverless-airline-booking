@@ -1,15 +1,14 @@
-
 # Flight uses API authorization level
 # and fine-grained auth to only allow authenticated users to read flights
 # except users member of Admin group
-type Flight 
+type Flight
     @model(subscriptions: null)
     # TODO: Commenting this out until we have clear instructions on adding an user as `Admin`
     ## OR alternatively creating a flight as part of CI while ETL isn't done yet
     # @auth(rules:[
     #     {allow: private, operations: [read]}
     # ])
-    @key(name: "ByDepartureSchedule", 
+    @key(name: "ByDepartureSchedule",
         fields: ["departureAirportCode", "arrivalAirportCode", "departureDate"],
         queryField: "getFlightBySchedule")
 {
@@ -34,13 +33,13 @@ type Flight
 # Booking uses API authorization level
 # and fine-grained auth to only allow book owners to see their own bookings
 # and any authenticated user member of Admin group (e.g. could be travel agency, etc.)
-type Booking 
-    @model(subscriptions: null) 
+type Booking
+    @model(subscriptions: null)
     @auth(rules: [
       {allow: owner, ownerField: "customer", identityField: "sub", operations: [read]},
       {allow: groups, groups: ["Admin"]}
     ])
-    @key(name: "ByCustomerStatus", 
+    @key(name: "ByCustomerStatus",
         fields: ["customer", "status"],
         queryField: "getBookingByStatus")
 {
