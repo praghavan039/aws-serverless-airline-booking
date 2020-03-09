@@ -37,25 +37,33 @@ export default {
   },
   data() {
     return {
-      authConfig: {
-        signUpConfig: {
-          defaultCountryCode: "44",
-          signUpFields: [
-            {
-              label: "First name",
-              key: "given_name",
-              required: true,
-              displayOrder: 0
-            },
-            {
-              label: "Family name",
-              key: "family_name",
-              required: true,
-              displayOrder: 1
-            }
-          ]
-        }
-      }
+       authConfig: {
+          usernameAttributes: 'phone_number',
+          signUpConfig: {
+            header: 'Create a new account',
+            hideAllDefaults: true,
+            //defaultCountryCode: '91',
+            signUpFields: [
+              {
+                label: 'Phone Number',
+                key: 'phone_number',
+                required: true,
+                displayOrder: 1,
+                type: 'string'
+              },
+              {
+                label: 'Password',
+                key: 'password',
+                required: true,
+                displayOrder: 2,
+                type: 'password'
+              }
+            ]
+          },
+          signInConfig: {
+            defaultCountryCode: '91',
+          }
+       }
     };
   }
 };
